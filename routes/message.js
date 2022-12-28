@@ -33,7 +33,7 @@ router.get('/:id', async function(req, res) {
        })
         res.render('chat' ,{
            myid  : req.session.userid ,
-           messages  : [messages]  , 
+           messages  : messages  , 
            formdata :  messages.users.find(user => user.id != req.session.userid  ) , 
            chatId  :  id , 
            myname : req.session.username ,
