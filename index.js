@@ -24,6 +24,13 @@ socket.on('JoinNotificationRoom' ,  (data)=>{
 } )
 
 
+socket.on('reqestpeerId' , (id)=>{
+   socket.broadcast.to(id).emit('getPerrId')
+})
+socket.on('sendPerrId' , (data)=>{
+  socket.broadcast.to(data.chatId).emit('recevedPeerId' , data.peerId)
+})
+
 
 socket.on('onlineFriends' , (id)=>{
       io.onlineFriends[id] =  true
