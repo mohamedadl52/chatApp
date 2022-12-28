@@ -18,9 +18,9 @@
             <div class="col-md-6 col-lg-7  col-xl-8">
                 
                 <ul id="con" style="height: 400px; overflow: scroll;" class="list-unstyled">
-                  <% if(messages.length == 0){ %>
-                         <li class="alert alert-danger"> no Messages yet</li>
-                  <% }else { %>
+                  <% if(messages.length == null){ %>
+                         <li class="alert alert-danger" id="nomsg"> no Messages yet</li>
+                  <% } else { %>
                     <% for (let Message of messages  ) { %>
 
                       <li class="d-flex justify-content-between mb-4">
