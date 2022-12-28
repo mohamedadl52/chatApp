@@ -1,4 +1,3 @@
-require("dotenv").config(); // load .env variables
 const { Router } = require("express"); // import router from express
 const User = require("../models/User"); // import user model
 const chat = require("../models/chat"); // import user model
@@ -25,8 +24,9 @@ router.get('/:id', async function(req, res) {
         }
     }).populate('sender')
     // res.render('chat', {'user': user  , myid : req.session.userid , myname :req.session.username , 'isOwner' : req.params.id ==  req.session.userid , 'isFriend' : user.friends.find(friend=> friend.id == req.session.userid ) , 'isRequestSent' : user.friendRequests.find(friend=> friend.id == req.session.userid ) , 'isRequestRecieved' : user.sentRequests.find(friend=> friend.id == req.session.userid ) , friends : req.session.friends});
-   if(messages.length == 0){
  
+    if(messages.length == 0){
+        
        messages = await chat.findById(id).populate({
         path : 'users' , 
         model :  'User'
