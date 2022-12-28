@@ -64,3 +64,44 @@ socket.on('receviedMsg' , data=>{
    } 
 })
 
+let peerId  =  null 
+peer.on('open' , (id)=>{
+  console.log(id)
+   peerId = id
+})
+
+videoCall.onclick =  ()=>{
+  socket.emit('reqestpeerId'  , chatId)
+}
+
+socket.on('getPerrId' , ()=>{
+    socket.emit('sendPerrId' , {
+      chatId : chatId , 
+      peerId : peerId
+    })
+})
+
+socket.on('recevedPeerId' , (id)=>{
+console.log(id)
+navigator.mediaDevices.getUserMedia({video : true , audio : true }).then((stream)=>{
+                  let call = peer.call(id,stream)
+                  call.on('stream' , showvideocall)
+
+}).catch(err=> console.log(err))
+})
+
+peer.on('call' ,  (call)=>{
+  navigator.mediaDevices.getUserMedia({video : true , audio : true }).then((stream)=>{
+     call.answer(stream)
+    call.on('stream' , showvideocall)
+
+}).catch(err=> console.log(err))
+})
+
+function showvideocall(stream){
+  let video = document.createElement('video')
+  video.srcObject = stream
+  document.body.append(video)
+  video.play()
+
+}
