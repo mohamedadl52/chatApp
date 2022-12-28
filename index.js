@@ -1,4 +1,3 @@
-require("dotenv").config() // load .env variables
 var express = require('express');
 var app = express();
 const mongoose = require("mongoose") //import fresh mongoose object
@@ -100,7 +99,7 @@ const {PORT = 3000} = process.env.PORT
 // use res.render to load up an ejs view file
 const {DATABASE_URL} = process.env 
 // CONNECT TO MONGO
-mongoose.connect = mongoose.connect(DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect = mongoose.connect("mongodb+srv://hamodyadl52:mhmdadl52@cluster0.bj4sx.mongodb.net/chatApp", {useNewUrlParser: true, useUnifiedTopology: true})
 
 
 // CONNECTION EVENTS
