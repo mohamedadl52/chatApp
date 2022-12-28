@@ -63,7 +63,7 @@ socket.on('receviedMsg' , data=>{
     `
    } 
 })
-
+var peer = new Peer();
 let peerId  =  null 
 peer.on('open' , (id)=>{
   console.log(id)
