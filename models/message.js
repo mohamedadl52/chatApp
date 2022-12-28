@@ -3,7 +3,7 @@ const {Schema, model} = require("mongoose") // import Schema & model
 // User Schema
 const mesageSchema = new Schema({
     content : String , 
-    sender  : Schema.Types.ObjectId  ,
+    sender  : {type: Schema.Types.ObjectId  ,  ref:'User'}  ,
     timeStamp :  String ,  
     chat :  Schema.Types.ObjectId 
     
